@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block body %} 
+{% for product in products %}
+<ul>
+
+	<li><b>Seller</b>:{{product['seller']}}</li>
+	<li><b>Product name</b>: {{product['name']}}</li>
+	<li><b>Product price</b>: {{product['price']}}</li>
+	<li><b>Product Description</b>:{{product['description']}}</li>
+	<li><b>Quantity</b>:{{product['cart']['quantity']}}</li><br>
+
+</ul>
+<form action="/remove_cart" method="POST">
+	<input type="hidden" name="name" value="{{product['name']}}">
+	<input type="submit" value="Remove from cart">
+
+<!--</form>
+<form action="/add_quantity" method="POST">
+	<input type="hidden" name="name" value="{{product['cart']['quantity']}}">
+	<input type="submit" value="Add Quantity">
+
+</form>-->
+
+{% endfor %}
+{% endblock body %}
